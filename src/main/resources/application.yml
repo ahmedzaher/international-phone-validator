@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    database-platform: com.example.internationalphonevalidator.config.SQLiteDialect
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:sqlite::resource:data/sample.db
+    driver-class-name: org.sqlite.JDBC
+
+
+
