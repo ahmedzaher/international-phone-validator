@@ -1,14 +1,11 @@
 package com.example.internationalphonevalidator.shared.enums;
 
-public enum PhoneNumberState {
-
-    VALID("valid"),
-    INVALID("not valid")
-    ;
+public enum GlobalMessage {
+    UNKNOWN("Unknown");
 
     private String value;
 
-    PhoneNumberState(String value) {
+    GlobalMessage(String value) {
         this.value = value;
     }
 

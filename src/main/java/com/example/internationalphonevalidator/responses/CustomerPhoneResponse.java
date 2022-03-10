@@ -1,12 +1,13 @@
 package com.example.internationalphonevalidator.responses;
 
-import lombok.Builder;
+import com.example.internationalphonevalidator.shared.enums.GlobalMessage;
+import com.example.internationalphonevalidator.shared.enums.PhoneNumberState;
 import lombok.Data;
-import lombok.Getter;
 
-@Getter
-@Builder
+@Data
 public class CustomerPhoneResponse {
+
+    private String name;
 
     private String country;
 
@@ -16,4 +17,10 @@ public class CustomerPhoneResponse {
 
     private String number;
 
+    public CustomerPhoneResponse(String number) {
+        this.number = number;
+        this.setCountry(GlobalMessage.UNKNOWN.getValue());
+        this.setCountryCode(GlobalMessage.UNKNOWN.getValue());
+        this.setState(PhoneNumberState.INVALID.getValue());
+    }
 }

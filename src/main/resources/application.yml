@@ -6,6 +6,8 @@ spring:
   datasource:
     url: jdbc:sqlite::resource:data/sample.db
     driver-class-name: org.sqlite.JDBC
-
+countries:
+  data:
+    path: ./data/countries.json
 
 

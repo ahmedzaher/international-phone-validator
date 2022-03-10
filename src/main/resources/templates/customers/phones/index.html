@@ -1,32 +1,67 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+>
 
 <head>
     <title>Good Thymes Virtual Grocery</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}"/>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
+<div class="mdl-layout" style="align-items: center">
+    <main class="mdl-layout__content " >
+        <h2>Welcome</h2>
+        <form method="get" action="phones">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <select class="mdl-textfield__input" id="countries" name="countryCode">
+                    <option></option>
+                    <option data-th-each="data : ${phoneCountries}" data-th-value=${data.code} data-th-text="${data.name}">
+                        ...
+                    </option>
+                </select>
+                <label class="mdl-textfield__label" for="countries">Countries</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <select class="mdl-textfield__input" id="states" name="state">
+                    <option></option>
+                    <option data-th-value="VALID">Valid</option>
+                    <option data-th-value="INVALID">not valid</option>
+                </select>
+                <label class="mdl-textfield__label" for="states">States</label>
+            </div>
+            <div style="display:inline">
+                <button class = "mdl-button mdl-js-button mdl-button--raised" type="submit">
+                    <i class = "material-icons">filter_alt</i> Filter</button></td>
+            </div>
+        </form>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Country</th>
+                <th class="mdl-data-table__cell--non-numeric">State</th>
+                <th class="mdl-data-table__cell--non-numeric">Country Code</th>
+                <th class="mdl-data-table__cell--non-numeric">Number</th>
+            </thead>
+            <tbody>
+            <tr data-th-each="data : ${customerPhones}">
+                <td class="mdl-data-table__cell--non-numeric" data-th-text="${data.name}">...</td>
+                <td class="mdl-data-table__cell--non-numeric" data-th-text="${data.country}">...</td>
+                <td class="mdl-data-table__cell--non-numeric" data-th-text="${data.state}">...</td>
+                <td class="mdl-data-table__cell--non-numeric" data-th-text="${data.countryCode}">...</td>
+                <td class="mdl-data-table__cell--non-numeric" data-th-text="${data.number}">...</td>
+            </tr>
+            </tbody>
 
-    <h2>Welcome</h2>
-    <table>
-        <tr>
-            <th>COUNTRY</th>
-            <th>STATE</th>
-            <th>COUNTRY CODE</th>
-            <th>NUMBER</th>
-        </tr>
-        <tr data-th-each="data : ${customerPhones}">
-            <td data-th-text="${data.country}">as</td>
-            <td data-th-text="${data.state}">...</td>
-            <td data-th-text="${data.countryCode}">...</td>
-            <td data-th-text="${data.number}">...</td>
-        </tr>
-</table>
+        </table>
+    </main>
+
+</div>
+
 </body>
 
 </html>
